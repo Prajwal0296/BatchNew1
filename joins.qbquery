@@ -1,0 +1,27 @@
+﻿ use test51;
+
+create table customer(cid int primary key, cname varchar(20));
+
+insert into customer values (101, 'rahul'),(102, 'satej'),(103,'saurabh'),(104,'gaurav'),(105,'vinay');
+
+SELECT * FROM customer c;
+
+create table product(prid int primary key, productname varchar(20), price int, customerid int, foreign key (customerid) references customer (cid));
+
+insert into product values (11, 'TV', 50000, 102),(12,'AC',65000,101),(13,'mobile',30000,104),(14,'book',8000,102),(15,'earphones',2000,105);
+
+SELECT * FROM product p;
+
+insert into product(prid, productname, price) values (16, 'fridge', 60000);
+
+SELECT * FROM product p;
+
+select customer.cname, product.prid, product.productname from customer inner join product on customer.cid = product.customerid;
+
+select * from product;
+
+select customer.cid,customer.cname, product.prid, product.productname, product.price from customer left join product on customer.cid = product.customerid;
+
+select customer.cid, customer.cname, product.productname, product.price from customer right join product on customer.cid = product.customerid;
+
+s
